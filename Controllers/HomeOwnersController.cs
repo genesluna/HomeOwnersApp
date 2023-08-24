@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using HomeOwnersApp.Data;
 using HomeOwnersApp.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HomeOwnersApp.Controllers
 {
+    [Authorize]
     public class HomeOwnersController : Controller
     {
         private readonly AppDataContext _context;
