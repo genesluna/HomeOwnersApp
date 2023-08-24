@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using HomeOwnersApp.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<AppDataContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AppDataContext") ?? throw new InvalidOperationException("Connection string 'AppDataContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
