@@ -1,0 +1,36 @@
+﻿@model HomeOwnersApp.Models.HomeOwners
+
+@{
+    ViewData["Title"] = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-1">
+            Telefone:
+        </dt>
+        <dd class = "col-sm-11">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt class = "col-sm-1">
+            Idade:
+        </dt>
+        <dd class = "col-sm-11">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class = "col-sm-1">
+            Bairro:
+        </dt>
+        <dd class = "col-sm-11">
+            @Html.DisplayFor(model => model.Site)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-dark">Editar</a>
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</div>
