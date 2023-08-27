@@ -42,15 +42,36 @@
                     @Html.DisplayFor(modelItem => item.Site)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
-                        <i class="fa-regular fa-pen-to-square text-secondary"></i>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-link">
+                        <i class="fa-regular fa-pen-to-square text-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"></i>
                     </a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Detalhes">
-                        <i class="fa-regular fa-eye text-secondary"></i>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-link">
+                        <i class="fa-regular fa-eye text-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Detalhes"></i>
                     </a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Deletar">
-                        <i class="fa-regular fa-trash-can text-secondary"></i>
-                    </a>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#DeleteModal-@item.Id">
+                        <i class="fa-regular fa-trash-can text-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Deletar"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="DeleteModal-@item.Id" tabindex="-1" aria-labelledby="DeleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="DeleteModalLabel">Deletar morador</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Deseja realmente excluir o cadastro de @item.Name? 
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Sim</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
     }
