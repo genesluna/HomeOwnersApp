@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using HomeOwnersApp.Data;
 using Microsoft.AspNetCore.Identity;
 using HomeOwnersApp.Areas.Identity.Data;
@@ -17,6 +16,16 @@ builder.Services.AddDefaultIdentity<AppUser>(options => options.SignIn.RequireCo
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddRazorPages();
+
+// Configuring simple passwords for dev purposes.
+builder.Services.Configure<IdentityOptions>(opt =>
+{
+    opt.Password.RequiredUniqueChars = 0;
+    opt.Password.RequireNonAlphanumeric = false;
+    opt.Password.RequireDigit = false;
+    opt.Password.RequireLowercase = false;
+    opt.Password.RequireUppercase = false;
+});
 
 var app = builder.Build();
 
@@ -37,7 +46,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=HomeOwners}/{action=Index}/{id?}");
 
 app.MapRazorPages();
 
