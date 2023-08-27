@@ -115,26 +115,6 @@ namespace HomeOwnersApp.Controllers
         // GET: HomeOwners/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
-            if (id == null || _context.HomeOwners == null)
-            {
-                return NotFound();
-            }
-
-            var homeOwners = await _context.HomeOwners
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (homeOwners == null)
-            {
-                return NotFound();
-            }
-
-            return View(homeOwners);
-        }
-
-        // POST: HomeOwners/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
-        {
             if (_context.HomeOwners == null)
             {
                 return Problem("Entity set 'AppDataContext.HomeOwners'  is null.");
@@ -144,7 +124,7 @@ namespace HomeOwnersApp.Controllers
             {
                 _context.HomeOwners.Remove(homeOwners);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
