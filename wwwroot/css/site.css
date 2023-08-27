@@ -19,7 +19,8 @@ html {
 
 body {
     margin-bottom: 60px;
-    font-family: Roboto,sans-serif;
+    background-color: #fdfdfd;
+    font-family: Roboto, sans-serif;
 }
 
 /*tab navigation*/
